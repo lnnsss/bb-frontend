@@ -12,9 +12,12 @@ const NotFound = observer(() => {
     return (
         <div className={s.notFound}>
             <div className={`__container ${s.notFound__container}`}>
-                <h2>404</h2>
-                <h3>Page Not Found</h3>
-                <Link className={s.notFound__link} to={isAdmin ? "/admin" : "/"}>На главную</Link>
+                <img className={s.logo} src="/logo.png" alt="logo"/>
+                <h2>Страница не найдена</h2>
+                <p>Страница, которую вы ищете, не существует.</p>
+                <Link className={s.notFound__link} to={isAdmin ? "/admin" : "/"}>
+                    На главную
+                </Link>
             </div>
         </div>
     )
