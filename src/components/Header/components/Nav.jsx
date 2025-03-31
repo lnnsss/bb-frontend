@@ -14,8 +14,8 @@ const Nav = observer(() => {
         <div className={`${s.header__links} ${isMenuOpen ? s.open : ''}`}>
             <nav className={s.header__nav}>
                 <ul className={s.header__nav_list}>
+                    <HeaderLink path="players">Состав</HeaderLink>
                     <HeaderLink path="games">Игры</HeaderLink>
-                    <HeaderLink path="players">Игроки</HeaderLink>
                     {token
                         ? (<HeaderLink path="account">Аккаунт</HeaderLink>)
                         : (<>
