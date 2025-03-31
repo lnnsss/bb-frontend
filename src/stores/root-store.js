@@ -3,6 +3,7 @@ import headerStore from "./header-store.js";
 import registrationStore from "./registration-store.js";
 import loginStore from "./login-store.js";
 import playersStore from "./players-store.js";
+import gamesStore from "./games-store.js";
 
 class RootStore {
     token = tokenStore
@@ -10,6 +11,7 @@ class RootStore {
     registration = registrationStore
     login = loginStore
     players = playersStore
+    games = gamesStore
 }
 
 export default RootStore;

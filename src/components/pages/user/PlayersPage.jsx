@@ -6,7 +6,7 @@ const PlayersPage = () => {
     return (
         <>
             <Helmet>
-                <title>Игроки</title>
+                <title>Состав</title>
             </Helmet>
             <Players />
         </>

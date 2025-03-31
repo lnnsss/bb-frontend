@@ -1,0 +1,116 @@
+.games {
+    padding: 40px 0;
+    background-color: #f4f4f4;
+}
+
+.gamesTitle {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: var(--darkBlue);
+}
+
+.gameList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gameBlock {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.teamInfo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    max-width: 150px;
+}
+
+.teamLogo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 0.8em;
+}
+
+.teamName {
+    font-weight: bold;
+    color: #444;
+    font-size: 1rem;
+}
+
+.vs {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #888;
+    margin: 0 20px;
+}
+
+.matchDetails {
+    text-align: center;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.gameDate {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.gameVenue {
+    margin: 0;
+    color: #777;
+}
+
+.noGames {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+    font-style: italic;
+}
+
+/*----media---------------------------------*/
+
+@media (max-width: 600px) {
+    .gamesTitle {
+        font-size: 2rem;
+    }
+    .teamLogo {
+        width: 60px;
+        height: 60px;
+    }
+    .teamName {
+        font-size: 0.9rem;
+    }
+    .vs {
+        font-size: 1.2rem;
+        margin: 0 10px;
+    }
+    .gameBlock {
+        padding: 15px;
+    }
+}
