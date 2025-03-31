@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Take up at least the entire viewport height */
-    background-color: #f0f0f0; /* Light background color */
+    background-color: var(--grey); /* Light background color */
     padding: 20px;
 }
 

@@ -8,9 +8,7 @@ const Layout = () => {
         <>
             <Header/>
             <main>
-                <div className="main__container">
-                    <MainRoutes />
-                </div>
+                <MainRoutes />
             </main>
             <Footer/>
         </>
