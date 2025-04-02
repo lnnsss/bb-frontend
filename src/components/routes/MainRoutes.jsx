@@ -9,6 +9,7 @@ import NotFound from "../pages/user/NotFoundPage.jsx";
 import Games from "../pages/user/GamesPage.jsx";
 import Players from "../pages/user/PlayersPage.jsx";
 import Player from "../pages/user/PlayerPage.jsx";
+import Gallery from "../pages/user/GalleryPage.jsx";
 
 const MainRoutes = () => {
 
@@ -18,6 +19,7 @@ const MainRoutes = () => {
             <Route path="/games" element={<Games />} />
             <Route path="/players" element={<Players />} />
             <Route path="/players/:id" element={<Player />} />
+            <Route path="/photogallery" element={<Gallery />} />
 
             {/* Публичные маршруты  */}
             <Route element={<ProtectedRoute isProtected={false} redirectTo="/account" />}>
