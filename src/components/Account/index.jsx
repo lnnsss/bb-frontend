@@ -1,5 +1,7 @@
 import React from 'react';
 import s from "./styles.module.css";
+import {useStores} from "../../stores/root-store-context.js";
+import {useNavigate} from "react-router-dom";
 
 const currentUser = {
     firstName: "Иван",
@@ -9,6 +11,15 @@ const currentUser = {
 
 const Account = () => {
     const { firstName, lastName, email } = currentUser;
+    const {
+        token: { clearToken },
+    } = useStores()
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        clearToken()
+        navigate('/registration');
+    }
 
     return (
         <div className={s.account}>
@@ -25,7 +36,7 @@ const Account = () => {
                         <p className={s.userEmail}>{email}</p>
                         <div className={s.btns}>
                             <button className={s.editButton}>Редактировать профиль</button>
-                            <button className={s.logOutButton}>Выйти</button>
+                            <button className={s.logOutButton} onClick={handleLogOut}>Выйти</button>
                         </div>
                     </div>
                 </div>
