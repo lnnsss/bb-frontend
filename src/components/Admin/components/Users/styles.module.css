@@ -1,0 +1,59 @@
+.users {
+    padding: 20px 0;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+}
+
+.userList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.userBlock {
+    display: block;
+    padding: 15px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: var(--white);
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.userBlock:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.userName {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.userMail {
+    font-size: 0.95rem;
+    color: #666;
+    word-break: break-all;
+}
+
+.noUsers {
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
+}
