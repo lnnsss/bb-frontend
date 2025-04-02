@@ -1,0 +1,119 @@
+.account {
+    padding: 40px 0;
+    background-color: #f4f7f6;
+    min-height: calc(100vh - 100px);
+}
+
+.accountTitle {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--darkBlue);
+    font-size: 2.5rem;
+}
+
+.userInfoCard {
+    background-color: var(--white);
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.avatarPlaceholder {
+    width: 90px;
+    height: 90px;
+    background-color: var(--lightBlue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--darkBlue);
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.userDetails {
+    flex-grow: 1;
+}
+
+.userName {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.6em;
+    color: #212529;
+}
+
+.userEmail {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #6c757d;
+    font-size: 1em;
+}
+
+.btns {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.editButton, .logOutButton {
+    padding: 8px 16px;
+    font-size: 0.9em;
+    color: var(--white);
+    background-color: var(--blue);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    text-align: center;
+}
+
+.editButton:hover, .logOutButton:hover {
+    filter: brightness(80%);
+}
+
+.accountSection {
+    background-color: var(--white);
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 25px;
+}
+
+.sectionTitle {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.accountSection p {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/*----media---------------------------------*/
+
+@media (max-width: 768px) {
+    .userInfoCard {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .avatarPlaceholder {
+        margin-bottom: 15px;
+    }
+
+    .accountTitle {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+}

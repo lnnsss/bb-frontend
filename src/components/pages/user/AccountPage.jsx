@@ -6,7 +6,7 @@ const AccountPage = () => {
     return (
         <>
             <Helmet>
-                <title>Аккаунт</title>
+                <title>Личный компонент</title>
             </Helmet>
             <Account />
         </>
