@@ -1,6 +1,5 @@
 import React from 'react';
 import s from "../styles.module.css"
-import {Link} from "react-router-dom";
 
 const Card = ({id, imageUrl, name, lastName, number, hight, weight, position, birthday, country }) => {
     return (
