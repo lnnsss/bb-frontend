@@ -10,6 +10,7 @@ import Games from "../pages/user/GamesPage.jsx";
 import Players from "../pages/user/PlayersPage.jsx";
 import Player from "../pages/user/PlayerPage.jsx";
 import Gallery from "../pages/user/GalleryPage.jsx";
+import Merch from "../pages/user/MerchPage.jsx";
 
 const MainRoutes = () => {
 
@@ -20,6 +21,7 @@ const MainRoutes = () => {
             <Route path="/players" element={<Players />} />
             <Route path="/players/:id" element={<Player />} />
             <Route path="/photogallery" element={<Gallery />} />
+            <Route path="/merch" element={<Merch />} />
 
             {/* Публичные маршруты  */}
             <Route element={<ProtectedRoute isProtected={false} redirectTo="/account" />}>

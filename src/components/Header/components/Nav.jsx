@@ -16,6 +16,7 @@ const Nav = observer(() => {
                 <ul className={s.header__nav_list}>
                     <HeaderLink path="players">Состав</HeaderLink>
                     <HeaderLink path="games">Игры</HeaderLink>
+                    <HeaderLink path="merch">Мерч</HeaderLink>
                     <HeaderLink path="photogallery">Фотогалерея</HeaderLink>
                     {token
                         ? (<HeaderLink path="account">Аккаунт</HeaderLink>)
