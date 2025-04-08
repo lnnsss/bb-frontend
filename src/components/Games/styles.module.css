@@ -1,5 +1,5 @@
 .games {
-    padding: 40px 0;
+    padding: 120px 0;
     background-color: #f4f4f4;
 }
 
@@ -95,7 +95,10 @@
 
 /*----media---------------------------------*/
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .games {
+        padding: 90px 0;
+    }
     .gamesTitle {
         font-size: 2rem;
     }

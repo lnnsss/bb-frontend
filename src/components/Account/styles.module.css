@@ -1,5 +1,5 @@
 .account {
-    padding: 40px 0;
+    padding: 120px 0;
     background-color: #f4f7f6;
     min-height: calc(100vh - 100px);
 }
@@ -103,6 +103,9 @@
 /*----media---------------------------------*/
 
 @media (max-width: 768px) {
+    .account {
+        padding: 90px 0;
+    }
     .userInfoCard {
         flex-direction: column;
         align-items: flex-start;

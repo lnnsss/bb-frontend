@@ -1,5 +1,5 @@
 .players {
-    padding: 40px 0;
+    padding: 120px 0;
     background-color: var(--grey);
 }
 
@@ -97,4 +97,12 @@
     font-weight: 500;
     color: #343a40;
     margin-right: 5px;
+}
+
+/*----media---------------------------------*/
+
+@media (max-width: 768px) {
+    .players {
+        padding: 90px 0;
+    }
 }

@@ -1,12 +1,9 @@
-
-
-
 /*----bgBlock---------------------------------*/
 
 .bgBlock {
     position: relative;
     width: 100%;
-    height: 85vh;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -26,6 +23,7 @@
     transform: translateX(-50%) translateY(-50%);
     object-fit: cover;
     z-index: 1;
+    object-position: center top;
 }
 
 .bgBlock__overlay {
@@ -51,6 +49,59 @@
 
 .bgBlock__content h1 {
     margin: 0;
+}
+
+/*----news---------------------------------*/
+
+.news {
+    background-color: var(--orange);
+    padding: 60px 0;
+    color: var(--white);
+}
+
+
+.news__sectionTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: var(--white);
+}
+
+.news__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.news__item {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.news__item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.news__itemTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--darkBlue);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.news__itemText {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--black);
+    text-align: justify;
 }
 
 /*----aboutUs---------------------------------*/
@@ -227,6 +278,19 @@
         font-size: 42px;
         font-weight: 700;
     }
+    .news__sectionTitle {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    .news__list {
+        gap: 20px;
+    }
+    .news__item {
+        padding: 20px;
+    }
+    .news__itemTitle {
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -236,6 +300,15 @@
     .bgBlock h1 {
         font-size: 28px;
         font-weight: 700;
+    }
+    .news__list {
+        grid-template-columns: 1fr;
+    }
+    .news__itemTitle {
+        font-size: 1.2rem;
+    }
+    .news__itemText {
+        font-size: 0.9rem;
     }
     .aboutUs__section {
         width: 100%;

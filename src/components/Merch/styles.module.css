@@ -1,5 +1,5 @@
 .merch {
-    padding: 40px 0;
+    padding: 120px 0;
     background-color: var(--grey);
 }
 
@@ -86,4 +86,12 @@
 
 .buyButton:active {
     filter: brightness(80%);
+}
+
+/*----media---------------------------------*/
+
+@media (max-width: 768px) {
+    .merch {
+        padding: 90px 0;
+    }
 }

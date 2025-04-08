@@ -1,5 +1,5 @@
 .add {
-    padding: 100px 0;
+    padding: 150px 0;
 }
 
 .add__container {
@@ -113,7 +113,10 @@
 
 /*----media---------------------------------*/
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .add {
+        padding: 100px 0;
+    }
     .header {
         flex-direction: column;
         align-items: flex-start;

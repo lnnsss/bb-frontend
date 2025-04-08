@@ -9,6 +9,7 @@ const Footer = () => {
                     <p>Contact us:</p>
                     <p>Email: <a href="mailto:info@example.com">aptbacketball@gmail.com</a></p>
                     <p>Phone: <a href="tel:+15551234567">+7 (937) 778-7602</a></p>
+                    <p>Telegram: <a href="https://t.me/aptdubl" target="_blank">@aptdubl</a></p>
                 </div>
                 <div className={s.footer__copyright}>
                     <p>© {new Date().getFullYear()} My Company. All rights reserved.</p>

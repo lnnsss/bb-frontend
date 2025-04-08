@@ -6,6 +6,7 @@ const partners = [
     { name: 'ФЦДО', img: 'fedcdo.png', link: 'https://fedcdo.ru/' },
     { name: 'Татарстан', img: 'tatarstan.png', link: '#' },
     { name: 'Айти Куб', img: 'itcube.png', link: 'https://almetpt.ru/2020/itcube/index' },
+    { name: 'МЛБЛ', img: 'mlbl.jpg', link: 'https://ilovebasket.ru/' },
 ];
 
 const Partners = () => {

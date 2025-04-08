@@ -1,5 +1,7 @@
+/* styles.module.css */
+
 .header {
-    background-color: var(--darkBlue);
+    background-color: transparent;
     color: var(--white);
     padding: 15px 0;
     position: fixed;
@@ -7,6 +9,11 @@
     left: 0;
     width: 100%;
     z-index: 100;
+    transition: background-color 0.3s ease-in-out; /* Apply transition here */
+}
+
+.header.scrolled {
+    background-color: var(--darkBlue);
 }
 
 .header__container {
@@ -97,6 +104,9 @@
 /*----media---------------------------------*/
 
 @media (max-width: 768px) {
+    .header {
+        background-color: var(--darkBlue);
+    }
     .header__container {
         align-items: center;
     }

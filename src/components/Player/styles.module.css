@@ -1,5 +1,5 @@
 .player {
-    padding: 40px 0;
+    padding: 120px 0;
     background-color: #f8f9fa;
     min-height: calc(100vh - 100px);
 }
@@ -35,6 +35,9 @@
 }
 
 @media (min-width: 768px) {
+    .player {
+        padding: 90px 0;
+    }
     .playerDetailCard {
         grid-template-columns: 2fr 3fr;
         gap: 30px;
