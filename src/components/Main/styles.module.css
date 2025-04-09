@@ -60,7 +60,7 @@
 }
 
 
-.news__sectionTitle {
+.news h2 {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 700;
@@ -117,12 +117,11 @@
 }
 
 .aboutUs h2 {
-    font-size: 3rem;
-    font-weight: 500;
-    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
     color: var(--darkBlue);
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 .aboutUs__content {
@@ -179,12 +178,11 @@
 }
 
 .partners h2 {
-    font-size: 3rem;
-    font-weight: 500;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 40px;
     color: var(--white);
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 .partners__grid {
@@ -235,12 +233,11 @@
 }
 
 .why h2 {
-    font-size: 3rem;
-    font-weight: 500;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 40px;
     color: var(--darkBlue);
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 .why__list {

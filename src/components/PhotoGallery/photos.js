@@ -1,0 +1,21 @@
+export const photos = [
+    { image: '1.jpg', date: '2023-08-15', location: 'Казань' },
+    { image: '2.jpg', date: '2024-01-22', location: 'Альметьевск' },
+    { image: '3.jpg', date: '2023-11-05', location: 'Альметьевск' },
+    { image: '4.jpg', date: '2024-09-30', location: 'Казань' },
+    { image: '5.jpg', date: '2023-07-10', location: 'Казань' },
+    { image: '6.jpg', date: '2024-12-01', location: 'Альметьевск' },
+    { image: '7.jpg', date: '2024-03-18', location: 'Альметьевск' },
+    { image: '8.jpg', date: '2023-09-25', location: 'Казань' },
+    { image: '9.jpg', date: '2024-06-07', location: 'Альметьевск' },
+    { image: '10.jpg', date: '2024-11-11', location: 'Казань' },
+    { image: '11.jpg', date: '2023-12-30', location: 'Казань' },
+    { image: '12.jpg', date: '2024-08-02', location: 'Альметьевск' },
+    { image: '13.jpg', date: '2025-01-15', location: 'Альметьевск' },
+    { image: '14.jpg', date: '2024-04-20', location: 'Казань' },
+    { image: '15.jpg', date: '2023-10-19', location: 'Альметьевск' },
+    { image: '16.jpg', date: '2024-02-28', location: 'Казань' },
+    { image: '17.jpg', date: '2024-10-05', location: 'Альметьевск' },
+    { image: '18.jpg', date: '2023-07-29', location: 'Казань' },
+    { image: '19.jpg', date: '2025-02-10', location: 'Альметьевск' }
+]
