@@ -4,10 +4,6 @@
     min-height: calc(100vh - 100px);
 }
 
-.player__container {
-
-}
-
 .backButton {
     display: inline-block;
     margin-bottom: 25px;
@@ -34,9 +30,11 @@
     gap: 0;
 }
 
+/*----media---------------------------------*/
+
 @media (min-width: 768px) {
     .player {
-        padding: 90px 0;
+        padding: 120px 0;
     }
     .playerDetailCard {
         grid-template-columns: 2fr 3fr;

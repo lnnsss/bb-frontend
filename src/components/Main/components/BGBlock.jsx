@@ -1,12 +1,13 @@
 import React from 'react';
 import s from "../styles.module.css";
+import videoSrc from "../bg.mp4"
 
 const BGBlock = () => {
     return (
         <div className={s.bgBlock}>
             <video
                 className={s.bgBlock__video}
-                src="/bg.mp4"
+                src={videoSrc}
                 autoPlay
                 loop
                 muted
