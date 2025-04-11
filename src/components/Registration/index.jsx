@@ -1,9 +1,81 @@
 import React from 'react';
 import s from "./styles.module.css"
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import axios from "axios";
+import Cookies from "js-cookie";
 import FormGroup from "./components/FormGroup.jsx";
+import {useStores} from "../../stores/root-store-context.js";
+import {apiAuthURL} from "../../configs/constants.js";
+import {observer} from "mobx-react-lite";
 
-const Registration = () => {
+const Registration = observer(() => {
+    const navigate = useNavigate();
+    const {
+        registration: { formData: {name, lastName, email, password, confirmPassword}, clearForm },
+        token: { setToken }
+    } = useStores()
+
+    // Регистрация
+    const handleBtnClick = async (event) => {
+        event.preventDefault();
+
+        // Тело запроса
+        const body = {
+            name: (name.trim().charAt(0).toUpperCase() + name.trim().slice(1).toLowerCase()).trim(),
+            lastName: (lastName.trim().charAt(0).toUpperCase() + lastName.trim().slice(1).toLowerCase()).trim(),
+            email: email.trim(),
+            password: password.trim()
+        };
+
+        // Проверка на пустые поля
+        if (!name.trim() || !lastName.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
+            return alert("Все поля должны быть заполнены");
+        }
+
+        // Проверка на совпадение паролей
+        if (password !== confirmPassword) {
+            return alert("Пароли не совпадают");
+        }
+
+        try {
+            // Запрос на сервер
+            const response = await axios.post(`${apiAuthURL}/registration`, body);
+
+            // Обработка успешного ответа
+            if (response.data && response.data.content && response.data.content.token) {
+                const receivedToken = response.data.content.token;
+
+                // Сохранение токена
+                alert(response.data.message || "Регистрация прошла успешно!");
+                setToken(receivedToken);
+                Cookies.set('jwt', receivedToken, { secure: true, sameSite: 'Strict' });
+
+                // Очистка полей формы
+                clearForm();
+
+                // Переход на следующую страницу
+                const tokenPayload = JSON.parse(atob(receivedToken.split('.')[1]));
+                if (Array.isArray(tokenPayload.roles) && tokenPayload.roles.includes('ADMIN')) {
+                    navigate('/admin');
+                } else {
+                    navigate('/account');
+                }
+            } else {
+                console.error("Unexpected response structure:", response.data);
+                alert("Произошла ошибка при регистрации. Не удалось получить токен.");
+            }
+
+        } catch (error) {
+            console.error("Ошибка регистрации:", error);
+            if (error.response) {
+                alert(`Ошибка регистрации: ${error.response.data.message || error.response.statusText}`);
+            } else if (error.request) {
+                alert("Ошибка сети. Не удалось связаться с сервером.");
+            } else {
+                alert("Произошла ошибка при отправке данных.");
+            }
+        }
+    };
 
     return (
         <div className={s.registration}>
@@ -11,13 +83,13 @@ const Registration = () => {
                 <div className={s.registration__form}>
                     <h2>Регистрация</h2>
                     <form>
-                        <FormGroup name="firstName" text="Имя"/>
+                        <FormGroup name="name" text="Имя"/>
                         <FormGroup name="lastName" text="Фамилия"/>
                         <FormGroup name="email" text="Почта"/>
                         <FormGroup name="password" text="Пароль"/>
                         <FormGroup name="confirmPassword" text="Повторите пароль"/>
 
-                        <button type="submit" className={s.form__button}>Зарегистрироваться</button>
+                        <button onClick={handleBtnClick} className={s.form__button}>Зарегистрироваться</button>
                     </form>
 
                     <div className={s.registration__loginLink}>
@@ -27,6 +99,6 @@ const Registration = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Registration;
