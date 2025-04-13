@@ -1,25 +1,41 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./styles.module.css";
 import {useStores} from "../../stores/root-store-context.js";
 import {useNavigate} from "react-router-dom";
-
-const currentUser = {
-    firstName: "Иван",
-    lastName: "Петров",
-    email: "ivan.petrov@example.com"
-};
+import axios from "axios";
+import {apiUsersURL} from "../../configs/constants.js";
 
 const Account = () => {
-    const { firstName, lastName, email } = currentUser;
     const {
-        token: { clearToken },
+        token: { clearToken, getID },
+        account: { email, name, lastName, setEmail, setName, setLastName, clear }
     } = useStores()
     const navigate = useNavigate();
+    const id = getID();
 
+    // Выход из аккаунта
     const handleLogOut = () => {
+        clear()
         clearToken()
         navigate('/registration');
     }
+
+    // Запрос
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${apiUsersURL}/${id}`)
+                const { email, name, lastName } = response.data.content;
+                setEmail(email);
+                setName(name);
+                setLastName(lastName);
+
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        fetchData()
+    }, [id]);
 
     return (
         <div className={s.account}>
@@ -29,10 +45,10 @@ const Account = () => {
 
                 <div className={s.userInfoCard}>
                     <div className={s.avatarPlaceholder}>
-                        {firstName?.charAt(0)}{lastName?.charAt(0)}
+                        {name?.charAt(0)}{lastName?.charAt(0)}
                     </div>
                     <div className={s.userDetails}>
-                        <h2 className={s.userName}>{firstName} {lastName}</h2>
+                        <h2 className={s.userName}>{name} {lastName}</h2>
                         <p className={s.userEmail}>{email}</p>
                         <div className={s.btns}>
                             <button className={s.editButton}>Редактировать профиль</button>

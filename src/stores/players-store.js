@@ -167,6 +167,9 @@ class PlayersStore {
     addPlayer = (newPlayer) => {
         this.players = [...this.players, newPlayer];
     }
+    setPlayers = (newPlayers) => {
+        this.players = newPlayers
+    }
 }
 
 export default new PlayersStore();

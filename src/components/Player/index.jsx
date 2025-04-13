@@ -1,16 +1,44 @@
-import React, {useEffect} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {Link, useNavigate, useParams} from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import s from "./styles.module.css";
 import { useStores } from "../../stores/root-store-context.js";
+import axios from "axios";
+import {apiPlayersURL} from "../../configs/constants.js";
 
 const Player = observer(() => {
     const navigate = useNavigate();
-    const {
-        players: { players }
-    } = useStores();
+    const [player, setPlayer] = useState({
+        id: 0,
+        name: "Данил",
+        lastName: "Попов",
+        number: "00",
+        birthday: "18.01.2007",
+        country: "Россия",
+        position: "Легкий форвард",
+        hight: 178,
+        weight: 66,
+        imageUrl: "https://img.infobasket.su/photo/318469.jpg"
+    });
 
-    const player = players[0];
+    // id игрока
+    const params = useParams();
+    const playerId = params.idd;
+
+    // запрос
+    useEffect(() => {
+        const fetchPlayer = async () => {
+            try {
+                const response = await axios.get(`${apiPlayersURL}/${playerId}`)
+
+                setPlayer(response.data.content);
+
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        fetchPlayer()
+    }, [])
 
     return (
         <section className={s.player}>

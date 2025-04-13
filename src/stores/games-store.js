@@ -53,6 +53,9 @@ class GamesStore {
     addGame = (newGame) => {
         this.games = [...this.games, newGame];
     }
+    setGames = (newGames) => {
+        this.games = newGames
+    }
 }
 
 export default new GamesStore();

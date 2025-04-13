@@ -1,14 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { observer } from 'mobx-react-lite';
 import s from "./styles.module.css";
 import { useStores } from "../../stores/root-store-context.js";
 import Card from "./components/Card.jsx";
+import axios from "axios";
+import {apiPlayersURL} from "../../configs/constants.js";
 
 
 const Players = observer(() => {
     const {
-        players: { players }
+        players: { players, setPlayers }
     } = useStores();
+
+    useEffect(() => {
+        const fetchPlayers = async () => {
+            try {
+                const response = await axios.get(apiPlayersURL)
+
+                setPlayers(response.data.content);
+
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        fetchPlayers()
+    }, [])
 
     return (
         <section className={s.players}>

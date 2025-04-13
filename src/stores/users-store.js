@@ -49,6 +49,10 @@ class UsersStore {
     constructor() {
         makeAutoObservable(this);
     }
+
+    setUsers = (newUsers) => {
+        this.users = newUsers;
+    }
 }
 
 export default new UsersStore();

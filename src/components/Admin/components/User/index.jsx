@@ -1,14 +1,42 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./styles.module.css";
 import { observer } from "mobx-react-lite";
 import { useStores } from "../../../../stores/root-store-context.js";
+import {useParams} from "react-router-dom";
+import axios from "axios";
+import {apiUsersURL} from "../../../../configs/constants.js";
 
 const User = observer(() => {
     const {
-        user: { id, name, lastName, mail }
+        user: { id, name, lastName, email, setId, setName, setLastName, setEmail }
     } = useStores();
 
+    // id пользователя
+    const params = useParams();
+    const userId = params.id;
+
+    // инициалы имени, фамилии
     const initials = `${name[0]}${lastName[0]}`;
+
+    // запрос
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get(`${apiUsersURL}/${userId}`);
+
+                const {name, lastName, email} = response.data.content;
+
+                setId(userId);
+                setName(name);
+                setLastName(lastName);
+                setEmail(email);
+
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        fetchUser()
+    }, []);
 
     return (
         <div className={s.user}>
@@ -22,7 +50,7 @@ const User = observer(() => {
                     <div className={s.userInfo}>
                         <h3 className={s.userName}>{name} {lastName}</h3>
                         <p className={s.userDetail}><span className={s.label}>ID:</span> {id}</p>
-                        <p className={s.userDetail}><span className={s.label}>Email:</span> <a href={`mailto:${mail}`} className={s.userMail}>{mail}</a></p>
+                        <p className={s.userDetail}><span className={s.label}>Email:</span> <a href={`mailto:${email}`} className={s.userMail}>{email}</a></p>
 
                         <div className={s.actions}>
                             <button className={`${s.button} ${s.editButton}`}>Редактировать </button>
