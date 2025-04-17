@@ -1,10 +1,10 @@
 import { makeAutoObservable } from "mobx";
 
 class UserStore {
-    id = '1'
-    name = 'Иван';
-    lastName = 'Петров';
-    email = 'ivan.petrov@example.com';
+    id = ''
+    name = '';
+    lastName = '';
+    email = '';
 
     constructor() {
         makeAutoObservable(this);

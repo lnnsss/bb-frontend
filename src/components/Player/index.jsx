@@ -8,18 +8,7 @@ import {apiPlayersURL} from "../../configs/constants.js";
 
 const Player = observer(() => {
     const navigate = useNavigate();
-    const [player, setPlayer] = useState({
-        id: 0,
-        name: "Данил",
-        lastName: "Попов",
-        number: "00",
-        birthday: "18.01.2007",
-        country: "Россия",
-        position: "Легкий форвард",
-        hight: 178,
-        weight: 66,
-        imageUrl: "https://img.infobasket.su/photo/318469.jpg"
-    });
+    const [player, setPlayer] = useState();
 
     // id игрока
     const params = useParams();

@@ -1,17 +1,40 @@
 import React from 'react';
+import axios from 'axios';
 import s from "../styles.module.css";
 import FormGroup from "./FormGroup.jsx";
-import {useStores} from "../../../../../stores/root-store-context.js";
-import {observer} from "mobx-react-lite";
+import { useStores } from "../../../../../stores/root-store-context.js";
+import { observer } from "mobx-react-lite";
+import {apiPlayersURL} from "../../../../../configs/constants.js";
 
 const PlayerForm = observer(() => {
     const {
         addPlayer: { name, lastName, number, position, birthday, country, height, weight, imageUrl, setName, setLastName, setNumber, setPosition, setBirthday, setCountry, setHeight, setWeight, setImageUrl, resetForm }
-    } = useStores()
+    } = useStores();
 
-    const handleSubmit = () => {
-        resetForm()
-    }
+    const handleSubmit = async () => {
+        const playerData = {
+            name,
+            lastName,
+            number,
+            position,
+            birthday,
+            country,
+            height,
+            weight,
+            imageUrl
+        };
+
+        try {
+            await axios.post(apiPlayersURL, playerData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            resetForm();
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     return (
         <>
@@ -24,7 +47,9 @@ const PlayerForm = observer(() => {
             <FormGroup type="number" title="height" text="Рост" value={height} changeValue={setHeight} />
             <FormGroup type="number" title="weight" text="Вес" value={weight} changeValue={setWeight} />
             <FormGroup type="url" title="imageUrl" text="Фото игрока (url)" value={imageUrl} changeValue={setImageUrl} />
-            <button className={s.submitButton} onClick={handleSubmit} >Добавить игрока</button>
+            <button type="button" className={s.submitButton} onClick={handleSubmit}>
+                Добавить игрока
+            </button>
         </>
     );
 });
