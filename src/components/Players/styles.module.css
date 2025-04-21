@@ -6,8 +6,36 @@
 .players__title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     color: var(--darkBlue);
+}
+
+.players__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.players__search,
+.players__filter,
+.players__sort {
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    flex-grow: 1;
+    min-width: 180px;
+}
+
+.players__filter,
+.players__sort {
+    background-color: var(--white);
+    cursor: pointer;
 }
 
 .players__grid {
@@ -21,7 +49,10 @@
     text-align: center;
     color: #666;
     font-size: 1.1rem;
-    padding: 20px;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .playerCard {
@@ -32,6 +63,10 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 350px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .playerCard:hover {
@@ -99,10 +134,73 @@
     margin-right: 5px;
 }
 
-/*----media---------------------------------*/
+
+@media (max-width: 992px) {
+    .players__controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .players__search,
+    .players__filter,
+    .players__sort {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
 
 @media (max-width: 768px) {
     .players {
         padding: 90px 0;
+    }
+    .players__title {
+        font-size: 2rem;
+    }
+    .players__grid {
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .playerCard__name {
+        font-size: 1.2rem;
+    }
+    .playerCard__detail {
+        font-size: 0.9rem;
+    }
+    .playerCard {
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 630px) {
+    .players__grid {
+        justify-content: center;
+    }
+    .playerCard {
+        max-width: 350px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .players {
+        padding: 60px 0;
+    }
+    .players__grid {
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+    .players__controls {
+        padding: 15px;
+    }
+    .players__search,
+    .players__filter,
+    .players__sort {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    .playerCard {
+        max-width: 350px;
     }
 }
