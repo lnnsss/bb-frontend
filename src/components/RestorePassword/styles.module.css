@@ -1,4 +1,4 @@
-.login {
+.restorePassword {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -8,19 +8,37 @@
     text-align: center;
 }
 
-.login__container {
+.restorePassword__container {
     min-width: 600px;
     margin: 0 auto;
 }
 
-.login__form {
+.restorePassword__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--white);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 20px;
 }
 
-.login__form h2 {
+.restorePassword__form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.restorePassword__form form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--grey);
+}
+
+.restorePassword__form h2 {
     font-size: 24px;
     font-weight: 600;
 }
@@ -44,24 +62,6 @@
     font-size: 16px;
 }
 
-.login__regLink {
-    margin-top: 20px;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.login__regLink a {
-    color: var(--darkBlue);
-    text-decoration: none;
-}
-
-.login__regLink a:hover {
-    text-decoration: underline;
-}
-
 .form__button {
     background-color: var(--blue);
     border: none;
@@ -80,7 +80,7 @@
 /*----media---------------------------------*/
 
 @media (max-width: 768px) {
-    .login__container {
+    .restorePassword__container {
         min-width: 0;
         width: 100%;
     }

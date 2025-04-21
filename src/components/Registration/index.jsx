@@ -93,7 +93,12 @@ const Registration = observer(() => {
                     </form>
 
                     <div className={s.registration__loginLink}>
-                        Уже есть аккаунт? <Link to="/login">Войти</Link>
+                        <div>
+                            Забыли пароль? <Link to="/restorePassword">Восстановить</Link>
+                        </div>
+                        <div>
+                            Уже есть аккаунт? <Link to="/login">Войти</Link>
+                        </div>
                     </div>
                 </div>
             </div>
