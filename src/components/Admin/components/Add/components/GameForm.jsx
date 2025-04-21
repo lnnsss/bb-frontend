@@ -5,11 +5,13 @@ import FormGroup from "./FormGroup.jsx";
 import { useStores } from "../../../../../stores/root-store-context.js";
 import { observer } from "mobx-react-lite";
 import {apiGamesURL} from "../../../../../configs/constants.js";
+import { useNavigate } from 'react-router-dom';
 
 const GameForm = observer(() => {
     const {
         addGame: { opponent, date, venue, imageUrl, setOpponent, setDate, setVenue, setImageUrl, resetForm }
     } = useStores();
+    const navigate = useNavigate();
 
     const handleSubmit = async () => {
         const gameData = {
@@ -20,12 +22,9 @@ const GameForm = observer(() => {
         };
 
         try {
-            await axios.post(apiGamesURL, gameData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
+            await axios.post(apiGamesURL, gameData);
             resetForm();
+            navigate("/admin/games")
         } catch (err) {
             console.error(err);
         }
