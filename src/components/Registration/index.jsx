@@ -86,8 +86,8 @@ const Registration = observer(() => {
                         <FormGroup name="name" text="Имя"/>
                         <FormGroup name="lastName" text="Фамилия"/>
                         <FormGroup name="email" text="Почта"/>
-                        <FormGroup name="password" text="Пароль"/>
-                        <FormGroup name="confirmPassword" text="Повторите пароль"/>
+                        <FormGroup type="password" name="password" text="Пароль"/>
+                        <FormGroup type="password" name="confirmPassword" text="Повторите пароль"/>
 
                         <button onClick={handleBtnClick} className={s.form__button}>Зарегистрироваться</button>
                     </form>
