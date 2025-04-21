@@ -1,7 +1,25 @@
 import React from 'react';
 import s from "../styles.module.css"
+import axios from 'axios';
+import { apiPlayersURL } from "../../../../../configs/constants";
+import {useStores} from "../../../../../stores/root-store-context";
+import { observer } from 'mobx-react-lite';
 
-const Card = ({id, imageUrl, name, lastName, number, hight, weight, position, birthday, country }) => {
+const Card = observer(({id, imageUrl, name, lastName, number, hight, weight, position, birthday, country }) => {
+    const {
+        players: { players, setPlayers }
+    } = useStores();
+
+    // удаление игрока
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`${apiPlayersURL}/${id}`)
+            setPlayers(players.filter(p => p.id !== id))
+        } catch(err) {
+            console.error(err);
+        }
+    }
+
     return (
         <div className={s.playerCard}>
             <div className={s.playerCard__imageWrapper}>
@@ -33,10 +51,10 @@ const Card = ({id, imageUrl, name, lastName, number, hight, weight, position, bi
                     <span className={s.playerCard__label}>Страна:</span> {country}
                 </p>
                 <button className={`${s.playerCard__btn} ${s.editBtn}`}>Редактировать</button>
-                <button className={`${s.playerCard__btn} ${s.delBtn}`}>Удалить</button>
+                <button onClick={handleDelete} className={`${s.playerCard__btn} ${s.delBtn}`}>Удалить</button>
             </div>
         </div>
     );
-};
+});
 
 export default Card;
