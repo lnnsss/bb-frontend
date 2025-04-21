@@ -8,11 +8,11 @@ import {apiPlayersURL} from "../../configs/constants.js";
 
 const Player = observer(() => {
     const navigate = useNavigate();
-    const [player, setPlayer] = useState();
+    const [player, setPlayer] = useState({});
 
     // id игрока
     const params = useParams();
-    const playerId = params.idd;
+    const playerId = params.id;
 
     // запрос
     useEffect(() => {
@@ -27,7 +27,7 @@ const Player = observer(() => {
             }
         }
         fetchPlayer()
-    }, [])
+    }, [playerId])
 
     return (
         <section className={s.player}>
