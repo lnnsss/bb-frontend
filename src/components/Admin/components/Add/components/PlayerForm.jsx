@@ -25,11 +25,7 @@ const PlayerForm = observer(() => {
         };
 
         try {
-            await axios.post(apiPlayersURL, playerData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
+            await axios.post(apiPlayersURL, playerData);
             resetForm();
         } catch (err) {
             console.error(err);
