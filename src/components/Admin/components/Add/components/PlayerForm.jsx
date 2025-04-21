@@ -5,11 +5,13 @@ import FormGroup from "./FormGroup.jsx";
 import { useStores } from "../../../../../stores/root-store-context.js";
 import { observer } from "mobx-react-lite";
 import {apiPlayersURL} from "../../../../../configs/constants.js";
+import { useNavigate } from 'react-router-dom';
 
 const PlayerForm = observer(() => {
     const {
         addPlayer: { name, lastName, number, position, birthday, country, height, weight, imageUrl, setName, setLastName, setNumber, setPosition, setBirthday, setCountry, setHeight, setWeight, setImageUrl, resetForm }
     } = useStores();
+    const navigate = useNavigate();
 
     const handleSubmit = async () => {
         const playerData = {
@@ -27,6 +29,7 @@ const PlayerForm = observer(() => {
         try {
             await axios.post(apiPlayersURL, playerData);
             resetForm();
+            navigate("/admin/players")
         } catch (err) {
             console.error(err);
         }
