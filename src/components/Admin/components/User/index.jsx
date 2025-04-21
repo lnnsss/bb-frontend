@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import s from "./styles.module.css";
 import { observer } from "mobx-react-lite";
 import { useStores } from "../../../../stores/root-store-context.js";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import {apiUsersURL} from "../../../../configs/constants.js";
 
@@ -10,6 +10,7 @@ const User = observer(() => {
     const {
         user: { id, name, lastName, email, setId, setName, setLastName, setEmail }
     } = useStores();
+    const navigate = useNavigate();
 
     // id пользователя
     const params = useParams();
@@ -38,6 +39,22 @@ const User = observer(() => {
         fetchUser()
     }, []);
 
+    // удаление пользователя
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`${apiUsersURL}/${userId}`)
+
+            setId("");
+            setName("");
+            setLastName("");
+            setEmail("");
+            navigate("/admin/users")
+
+        } catch(err) {
+            console.error(err);
+        }
+    }
+
     return (
         <div className={s.user}>
             <div className={`__container ${s.user__container}`}>
@@ -54,7 +71,7 @@ const User = observer(() => {
 
                         <div className={s.actions}>
                             <button className={`${s.button} ${s.editButton}`}>Редактировать </button>
-                            <button  className={`${s.button} ${s.deleteButton}`}>Удалить</button>
+                            <button onClick={handleDelete} className={`${s.button} ${s.deleteButton}`}>Удалить</button>
                         </div>
                     </div>
                 </div>
