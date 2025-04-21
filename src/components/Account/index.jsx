@@ -4,8 +4,9 @@ import {useStores} from "../../stores/root-store-context.js";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {apiUsersURL} from "../../configs/constants.js";
+import { observer } from 'mobx-react-lite';
 
-const Account = () => {
+const Account = observer(() => {
     const {
         token: { clearToken, getID },
         account: { email, name, lastName, setEmail, setName, setLastName, clear }
@@ -70,6 +71,6 @@ const Account = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Account;
