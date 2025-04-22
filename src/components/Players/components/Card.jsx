@@ -2,7 +2,7 @@ import React from 'react';
 import s from "../styles.module.css"
 import {Link} from "react-router-dom";
 
-const Card = ({id, imageUrl, name, lastName, number, hight, weight, position, birthday, country }) => {
+const Card = ({id, imageUrl, name, lastName, number, height, weight, position, birthday, country }) => {
     return (
         <Link to={`/players/${id}`} className={s.playerCard}>
             <div className={s.playerCard__imageWrapper}>
@@ -22,7 +22,7 @@ const Card = ({id, imageUrl, name, lastName, number, hight, weight, position, bi
                     <span className={s.playerCard__label}>Позиция:</span> {position}
                 </p>
                 <p className={s.playerCard__detail}>
-                    <span className={s.playerCard__label}>Рост:</span> {hight} см
+                    <span className={s.playerCard__label}>Рост:</span> {height} см
                 </p>
                 <p className={s.playerCard__detail}>
                     <span className={s.playerCard__label}>Вес:</span> {weight} кг

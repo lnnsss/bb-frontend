@@ -54,7 +54,7 @@ const Player = observer(() => {
                             </div>
                             <div className={s.playerDetailCard__statItem}>
                                 <span className={s.playerDetailCard__label}>Рост:</span>
-                                <span className={s.playerDetailCard__value}>{player.hight} см</span>
+                                <span className={s.playerDetailCard__value}>{player.height} см</span>
                             </div>
                             <div className={s.playerDetailCard__statItem}>
                                 <span className={s.playerDetailCard__label}>Вес:</span>

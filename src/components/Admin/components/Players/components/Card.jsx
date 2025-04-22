@@ -5,7 +5,7 @@ import { apiPlayersURL } from "../../../../../configs/constants";
 import {useStores} from "../../../../../stores/root-store-context";
 import { observer } from 'mobx-react-lite';
 
-const Card = observer(({id, imageUrl, name, lastName, number, hight, weight, position, birthday, country }) => {
+const Card = observer(({id, imageUrl, name, lastName, number, height, weight, position, birthday, country }) => {
     const {
         players: { players, setPlayers }
     } = useStores();
@@ -39,7 +39,7 @@ const Card = observer(({id, imageUrl, name, lastName, number, hight, weight, pos
                     <span className={s.playerCard__label}>Позиция:</span> {position}
                 </p>
                 <p className={s.playerCard__detail}>
-                    <span className={s.playerCard__label}>Рост:</span> {hight} см
+                    <span className={s.playerCard__label}>Рост:</span> {height} см
                 </p>
                 <p className={s.playerCard__detail}>
                     <span className={s.playerCard__label}>Вес:</span> {weight} кг
