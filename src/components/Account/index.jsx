@@ -9,7 +9,8 @@ import { observer } from 'mobx-react-lite';
 const Account = observer(() => {
     const {
         token: { clearToken, getID },
-        account: { email, name, lastName, setEmail, setName, setLastName, clear }
+        account: { email, name, lastName, setEmail, setName, setLastName, clear },
+        ticket: { games, setGames }
     } = useStores()
     const navigate = useNavigate();
     const id = getID();
@@ -26,10 +27,11 @@ const Account = observer(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${apiUsersURL}/${id}`)
-                const { email, name, lastName } = response.data.content;
+                const { email, name, lastName, games } = response.data.content;
                 setEmail(email);
                 setName(name);
                 setLastName(lastName);
+                setGames(games)
 
             } catch (err) {
                 console.error(err)
