@@ -1,8 +1,9 @@
-import {makeAutoObservable} from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 class AddGameStore {
     opponent = '';
     date = '';
+    time = '';
     venue = '';
     imageUrl = '';
 
@@ -18,6 +19,10 @@ class AddGameStore {
         this.date = value;
     }
 
+    setTime = (value) => {
+        this.time = value;
+    }
+
     setVenue = (value) => {
         this.venue = value;
     }
@@ -29,6 +34,7 @@ class AddGameStore {
     resetForm = () => {
         this.opponent = '';
         this.date = '';
+        this.time = '';
         this.venue = '';
         this.imageUrl = '';
     }

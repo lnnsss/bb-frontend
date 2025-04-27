@@ -1,5 +1,6 @@
 import React from 'react';
 import s from "./styles.module.css"
+import {Link} from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -15,6 +16,11 @@ const Footer = () => {
                     <p>© {new Date().getFullYear()} My Company. All rights reserved.</p>
                     <p>
                         <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a>
+                    </p>
+                    <p>
+                        <Link to="/support">Обратная связь</Link>
+                        <span> | </span>
+                        <Link to="/support">Поддержка</Link>
                     </p>
                 </div>
             </div>

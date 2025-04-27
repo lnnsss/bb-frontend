@@ -9,6 +9,7 @@ import userStore from "./user-store.js";
 import addPlayerStore from "./add-player-store.js";
 import addGameStore from "./add-game-store.js";
 import accountStore from "./account-store.js";
+import newsStore from "./news-store.js";
 
 class RootStore {
     token = tokenStore
@@ -22,6 +23,7 @@ class RootStore {
     addPlayer = addPlayerStore
     addGame = addGameStore
     account = accountStore
+    news = newsStore
 }
 
 export default RootStore;

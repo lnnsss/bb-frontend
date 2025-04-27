@@ -9,14 +9,23 @@ import { useNavigate } from 'react-router-dom';
 
 const GameForm = observer(() => {
     const {
-        addGame: { opponent, date, venue, imageUrl, setOpponent, setDate, setVenue, setImageUrl, resetForm }
+        addGame: { opponent, date, time, venue, imageUrl, setOpponent, setDate, setTime, setVenue, setImageUrl, resetForm }
     } = useStores();
     const navigate = useNavigate();
 
     const handleSubmit = async () => {
+        let dateTime = "";
+        if (date) {
+            if (time) {
+                dateTime = `${date}T${time}:00`;
+            } else {
+                dateTime = `${date}T00:00:00`;
+            }
+        }
+
         const gameData = {
             opponent,
-            date,
+            dateTime,
             venue,
             imageUrl
         };
@@ -34,6 +43,7 @@ const GameForm = observer(() => {
         <>
             <FormGroup title="opponent" text="Соперник" value={opponent} changeValue={setOpponent} />
             <FormGroup type="date" title="date" text="Дата встречи" value={date} changeValue={setDate} />
+            <FormGroup type="time" title="time" text="Время встречи" value={time} changeValue={setTime} />
             <FormGroup title="venue" text="Место встречи" value={venue} changeValue={setVenue} />
             <FormGroup type="url" title="imageUrl" text="Эмблема соперника (url)" value={imageUrl} changeValue={setImageUrl} />
             <button type="button" className={s.submitButton} onClick={handleSubmit}>
