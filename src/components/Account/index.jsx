@@ -5,12 +5,13 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {apiUsersURL} from "../../configs/constants.js";
 import { observer } from 'mobx-react-lite';
+import MyTickets from "./components/MyTickets.jsx";
 
 const Account = observer(() => {
     const {
         token: { clearToken, getID },
         account: { email, name, lastName, setEmail, setName, setLastName, clear },
-        ticket: { games, setGames }
+        ticket: { setGames }
     } = useStores()
     const navigate = useNavigate();
     const id = getID();
@@ -60,13 +61,10 @@ const Account = observer(() => {
                     </div>
                 </div>
 
-                <div className={s.accountSection}>
-                    <h3 className={s.sectionTitle}>Карточка болельщика</h3>
-                    <p>в разработке</p>
-                </div>
+                <MyTickets />
 
                 <div className={s.accountSection}>
-                    <h3 className={s.sectionTitle}>Посещенные матчи</h3>
+                    <h3 className={s.sectionTitle}>Карточка болельщика</h3>
                     <p>в разработке</p>
                 </div>
 

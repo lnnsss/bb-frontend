@@ -100,6 +100,81 @@
     line-height: 1.6;
 }
 
+.ticketsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.ticketCard {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.ticketCard:hover {
+    transform: translateY(-5px);
+}
+
+.teamsRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.teamBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teamLogo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.teamName {
+    font-size: 0.9em;
+    color: var(--darkBlue);
+    font-weight: 600;
+    text-align: center;
+}
+
+.vs {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+}
+
+.ticketInfo {
+    margin-top: auto;
+}
+
+.ticketDate {
+    margin: 0 0 5px 0;
+    font-size: 0.95em;
+    color: #6c757d;
+}
+
+.ticketVenue {
+    margin: 0;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+b {
+    font-weight: 600;
+}
+
 /*----media---------------------------------*/
 
 @media (max-width: 768px) {
@@ -118,5 +193,8 @@
     .accountTitle {
         font-size: 1.8em;
         margin-bottom: 30px;
+    }
+    .ticketsList {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
 }

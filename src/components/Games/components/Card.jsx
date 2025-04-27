@@ -1,22 +1,51 @@
 import React from 'react';
-import s from "../styles.module.css"
+import s from "../styles.module.css";
+import axios from "axios";
+import { apiUsersURL } from "../../../configs/constants.js";
+import { useStores } from "../../../stores/root-store-context.js";
+import { observer } from "mobx-react-lite";
 
-const Card = ({imageUrl, opponent, date, venue }) => {
+const Card = observer(({ id, imageUrl, opponent, date, venue }) => {
+    const {
+        token: { getID }
+    } = useStores()
+    const userId = getID();
     const ourLogo = '/logo.png';
 
+    // Форматирование времени
     const formatDate = (dateString) => {
         try {
-            const date = new Date(dateString);
-            return date.toLocaleString('ru-RU', {
-                day: 'numeric',
+            const eventDate = new Date(dateString);
+            return eventDate.toLocaleDateString('ru-RU', {
+                day: '2-digit',
                 month: 'long',
                 year: 'numeric',
+            }) + ' в ' + eventDate.toLocaleTimeString('ru-RU', {
                 hour: '2-digit',
                 minute: '2-digit'
             });
         } catch (e) {
             console.error("Error formatting date:", e);
             return dateString;
+        }
+    };
+
+    // Покупка билета
+    const handleBuy = async () => {
+
+        const gameData = {
+            id,
+            opponent,
+            dateTime: date,
+            venue,
+            imageUrl
+        };
+
+        try {
+            await axios.post(`${apiUsersURL}/${userId}/addGame`, gameData);
+            alert("Билет на матч приобретен успешно")
+        } catch (err) {
+            console.error(err);
         }
     };
 
@@ -44,16 +73,17 @@ const Card = ({imageUrl, opponent, date, venue }) => {
                 </div>
             </div>
 
-            <div className={s.matchDetails}>
-                <p className={s.gameDate}>
-                    📅 {formatDate(date)}
-                </p>
-                <p className={s.gameVenue}>
-                    📍 {venue}
-                </p>
+            <div className={s.matchFooter}>
+                <div className={s.matchDetailsLeft}>
+                    <p className={s.gameDate}>📅 {formatDate(date)}</p>
+                    <p className={s.gameVenue}>📍 {venue}</p>
+                </div>
+                <div className={s.matchDetailsRight}>
+                    <button onClick={handleBuy} className={s.buyTicketButton}>Купить билет</button>
+                </div>
             </div>
         </div>
     );
-};
+});
 
 export default Card;
