@@ -10,7 +10,26 @@ const FormGroup = observer(({type="text", title, text, value, changeValue, requi
     return (
         <div className={s.formGroup}>
             <label htmlFor={title} className={s.label}>{text}:</label>
-            <input type={type} value={value} id={title} name={title} onChange={handleChangeValue} className={s.input} required={required} />
+            {type === 'textarea' ? (
+                <textarea
+                    id={title}
+                    name={title}
+                    value={value}
+                    onChange={handleChangeValue}
+                    className={`${s.input} ${s.textarea}`}
+                    required={required}
+                />
+            ) : (
+                <input
+                    type={type}
+                    value={value}
+                    id={title}
+                    name={title}
+                    onChange={handleChangeValue}
+                    className={s.input}
+                    required={required}
+                />
+            )}
         </div>
     );
 });

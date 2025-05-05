@@ -34,12 +34,28 @@ class NewsStore {
         }
     ]
 
+    title = '';
+    text = '';
+
     constructor() {
         makeAutoObservable(this);
     }
 
     setNews = (newNews) => {
-        this.news = newNews
+        this.news = newNews;
+    }
+
+    setTitle = (value) => {
+        this.title = value;
+    }
+
+    setText = (value) => {
+        this.text = value;
+    }
+
+    resetForm = () => {
+        this.title = '';
+        this.text = '';
     }
 }
 

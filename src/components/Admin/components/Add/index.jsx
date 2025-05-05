@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import s from "./styles.module.css";
 import PlayerForm from "./components/PlayerForm.jsx";
 import GameForm from "./components/GameForm.jsx";
+import NewsForm from "./components/NewsForm.jsx";
 import {observer} from "mobx-react-lite";
-
 
 const Add = observer(() => {
     const [addType, setAddType] = useState('player');
@@ -31,11 +31,19 @@ const Add = observer(() => {
                         >
                             Игру
                         </button>
+                        <button
+                            className={`${s.toggleButton} ${addType === 'news' ? s.active : ''}`}
+                            onClick={() => handleToggle('news')}
+                        >
+                            Новость
+                        </button>
                     </div>
                 </div>
 
                 <form className={s.form}>
-                    {addType === 'player' ? <PlayerForm /> : <GameForm />}
+                    {addType === 'player' && <PlayerForm />}
+                    {addType === 'game' && <GameForm />}
+                    {addType === 'news' && <NewsForm />}
                 </form>
 
             </div>

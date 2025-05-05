@@ -25,6 +25,7 @@ const Nav = observer(() => {
                     <HeaderLink path="users">Пользователи</HeaderLink>
                     <HeaderLink path="players">Игроки</HeaderLink>
                     <HeaderLink path="games">Игры</HeaderLink>
+                    <HeaderLink path="news">Новости</HeaderLink>
                     <li><button className={s.logOut} onClick={handleLogOut}>Выйти</button></li>
                 </ul>
             </nav>
