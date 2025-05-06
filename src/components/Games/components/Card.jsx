@@ -5,7 +5,7 @@ import { apiUsersURL } from "../../../configs/constants.js";
 import { useStores } from "../../../stores/root-store-context.js";
 import { observer } from "mobx-react-lite";
 
-const Card = observer(({ id, imageUrl, opponent, date, venue }) => {
+const Card = observer(({ id, imageUrl, opponent, dateTime, venue }) => {
     const {
         token: { getID }
     } = useStores()
@@ -36,7 +36,7 @@ const Card = observer(({ id, imageUrl, opponent, date, venue }) => {
         const gameData = {
             id,
             opponent,
-            dateTime: date,
+            dateTime,
             venue,
             imageUrl
         };
@@ -75,7 +75,7 @@ const Card = observer(({ id, imageUrl, opponent, date, venue }) => {
 
             <div className={s.matchFooter}>
                 <div className={s.matchDetailsLeft}>
-                    <p className={s.gameDate}>📅 {formatDate(date)}</p>
+                    <p className={s.gameDate}>📅 {formatDate(dateTime)}</p>
                     <p className={s.gameVenue}>📍 {venue}</p>
                 </div>
                 <div className={s.matchDetailsRight}>
