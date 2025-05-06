@@ -1,4 +1,3 @@
-// NewsCard.jsx
 import React from 'react';
 import s from "../styles.module.css";
 import { observer } from 'mobx-react-lite';
@@ -9,13 +8,13 @@ import {apiNewsURL} from "../../../../../configs/constants.js";
 
 const NewsCard = observer(({ id, title, text }) => {
     const {
-        news: { newsItems, setNewsItems }
+        news: { news, setNews }
     } = useStores();
 
     const handleDelete = async () => {
         try {
             await axios.delete(`${apiNewsURL}/${id}`);
-            setNewsItems(newsItems.filter(item => item.id !== id));
+            setNews(news.filter(item => item.id !== id));
         } catch(err) {
             console.error('Ошибка при удалении новости:', err);
         }
