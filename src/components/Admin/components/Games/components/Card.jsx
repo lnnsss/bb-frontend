@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "../styles.module.css"
 
-const Card = ({imageUrl, opponent, date, venue }) => {
+const Card = ({imageUrl, opponent, dateTime, venue }) => {
     const ourLogo = '/logo.png';
 
     const formatDate = (dateString) => {
@@ -46,7 +46,7 @@ const Card = ({imageUrl, opponent, date, venue }) => {
 
             <div className={s.matchDetails}>
                 <p className={s.gameDate}>
-                    📅 {formatDate(date)}
+                    📅 {formatDate(dateTime)}
                 </p>
                 <p className={s.gameVenue}>
                     📍 {venue}
