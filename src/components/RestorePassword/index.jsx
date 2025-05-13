@@ -3,8 +3,12 @@ import s from "./styles.module.css"
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import {apiAuthURL} from "../../configs/constants.js";
+import {useStores} from "../../stores/root-store-context.js";
 
 const RestorePassword = () => {
+    const {
+        modal: { openModal }
+    } = useStores();
     const navigate = useNavigate();
     const [email, setEmail] = useState("")
 
@@ -15,13 +19,13 @@ const RestorePassword = () => {
             try {
                 await axios.post(`${apiAuthURL}/password-reset/request`, { email })
 
-                alert(`Письмо для сброса пароля отправлено на почту: ${email}`)
+                openModal(`Письмо для сброса пароля отправлено на почту: ${email}`)
                 navigate("/login")
             } catch (error) {
                 if (error.response) {
-                    alert(`Ошибка: ${error.response.data.message || "Не удалось отправить письмо."}`)
+                    openModal(`Ошибка: ${error.response.data.message || "Не удалось отправить письмо."}`)
                 } else {
-                    alert("Ошибка сети. Попробуйте ещё раз.")
+                    openModal("Ошибка сети. Попробуйте ещё раз.")
                 }
                 console.error("Ошибка запроса:", error)
             }

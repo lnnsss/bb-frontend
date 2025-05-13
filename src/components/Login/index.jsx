@@ -12,7 +12,8 @@ const Login = observer(() => {
     const navigate = useNavigate();
     const {
         login: { formData: { email, password }, clearForm },
-        token: { setToken }
+        token: { setToken },
+        modal: { openModal }
     } = useStores();
 
     // Вход
@@ -27,7 +28,7 @@ const Login = observer(() => {
 
         // Проверка на пустые поля
         if (!email.trim() || !password.trim()) {
-            return alert("Все поля должны быть заполнены");
+            return openModal("Все поля должны быть заполнены");
         }
 
         try {
@@ -39,7 +40,7 @@ const Login = observer(() => {
                 const receivedToken = response.data.content.token;
 
                 // Сохранение токена
-                alert(response.data.message || "Вход прошёл успешно!");
+                openModal(response.data.message || "Вход прошёл успешно!");
                 setToken(receivedToken);
                 Cookies.set('jwt', receivedToken, { secure: true, sameSite: 'Strict' });
 
@@ -55,17 +56,17 @@ const Login = observer(() => {
                 }
             } else {
                 console.error("Unexpected response structure:", response.data);
-                alert("Произошла ошибка при входе. Не удалось получить токен.");
+                openModal("Произошла ошибка при входе. Не удалось получить токен.");
             }
 
         } catch (error) {
             console.error("Ошибка входа:", error);
             if (error.response) {
-                alert(`Ошибка входа: ${error.response.data.message || error.response.statusText}`);
+                openModal(`Ошибка входа: ${error.response.data.message || error.response.statusText}`);
             } else if (error.request) {
-                alert("Ошибка сети. Не удалось связаться с сервером.");
+                openModal("Ошибка сети. Не удалось связаться с сервером.");
             } else {
-                alert("Произошла ошибка при отправке данных.");
+                openModal("Произошла ошибка при отправке данных.");
             }
         }
     };

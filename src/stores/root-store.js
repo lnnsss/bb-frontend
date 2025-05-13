@@ -11,6 +11,7 @@ import addGameStore from "./add-game-store.js";
 import accountStore from "./account-store.js";
 import newsStore from "./news-store.js";
 import ticketStore from "./ticket-store.js";
+import modalStore from "./modal-store.js";
 
 class RootStore {
     token = tokenStore
@@ -26,6 +27,7 @@ class RootStore {
     account = accountStore
     news = newsStore
     ticket = ticketStore
+    modal = modalStore
 }
 
 export default RootStore;

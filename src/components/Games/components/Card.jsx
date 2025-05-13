@@ -7,7 +7,8 @@ import { observer } from "mobx-react-lite";
 
 const Card = observer(({ id, imageUrl, opponent, dateTime, venue }) => {
     const {
-        token: { getID }
+        token: { getID },
+        modal: { openModal }
     } = useStores()
     const userId = getID();
     const ourLogo = '/logo.png';
@@ -43,7 +44,7 @@ const Card = observer(({ id, imageUrl, opponent, dateTime, venue }) => {
 
         try {
             await axios.post(`${apiUsersURL}/${userId}/addGame`, gameData);
-            alert("Билет на матч приобретен успешно")
+            openModal("Билет на матч приобретен успешно")
         } catch (err) {
             console.error(err);
         }

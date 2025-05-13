@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import s from "./styles.module.css";
+import {useStores} from "../../stores/root-store-context.js";
 
 const Support = () => {
+    const {
+        modal: { openModal }
+    } = useStores();
     const [message, setMessage] = useState("");
     const [email, setEmail] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Тут можно добавить логику отправки данных (например, axios запрос)
-        alert("Сообщение отправлено!");
+        openModal("Сообщение отправлено!");
         setMessage("");
         setEmail("");
     };

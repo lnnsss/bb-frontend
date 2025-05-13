@@ -12,7 +12,8 @@ const Registration = observer(() => {
     const navigate = useNavigate();
     const {
         registration: { formData: {name, lastName, email, password, confirmPassword}, clearForm },
-        token: { setToken }
+        token: { setToken },
+        modal: { openModal }
     } = useStores()
 
     // Регистрация
@@ -29,12 +30,12 @@ const Registration = observer(() => {
 
         // Проверка на пустые поля
         if (!name.trim() || !lastName.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
-            return alert("Все поля должны быть заполнены");
+            return openModal("Все поля должны быть заполнены");
         }
 
         // Проверка на совпадение паролей
         if (password !== confirmPassword) {
-            return alert("Пароли не совпадают");
+            return openModal("Пароли не совпадают");
         }
 
         try {
@@ -46,7 +47,7 @@ const Registration = observer(() => {
                 const receivedToken = response.data.content.token;
 
                 // Сохранение токена
-                alert(response.data.message || "Регистрация прошла успешно!");
+                openModal(response.data.message || "Регистрация прошла успешно!");
                 setToken(receivedToken);
                 Cookies.set('jwt', receivedToken, { secure: true, sameSite: 'Strict' });
 
@@ -62,17 +63,17 @@ const Registration = observer(() => {
                 }
             } else {
                 console.error("Unexpected response structure:", response.data);
-                alert("Произошла ошибка при регистрации. Не удалось получить токен.");
+                openModal("Произошла ошибка при регистрации. Не удалось получить токен.");
             }
 
         } catch (error) {
             console.error("Ошибка регистрации:", error);
             if (error.response) {
-                alert(`Ошибка регистрации: ${error.response.data.message || error.response.statusText}`);
+                openModal(`Ошибка регистрации: ${error.response.data.message || error.response.statusText}`);
             } else if (error.request) {
-                alert("Ошибка сети. Не удалось связаться с сервером.");
+                openModal("Ошибка сети. Не удалось связаться с сервером.");
             } else {
-                alert("Произошла ошибка при отправке данных.");
+                openModal("Произошла ошибка при отправке данных.");
             }
         }
     };
