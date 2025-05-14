@@ -43,7 +43,7 @@ const Card = observer(({ id, imageUrl, opponent, dateTime, venue }) => {
         };
 
         try {
-            await axios.post(`${apiUsersURL}/${userId}/addGame`, gameData);
+            await axios.put(`${apiUsersURL}/${userId}/addGame`, gameData);
             openModal("Билет на матч приобретен успешно")
         } catch (err) {
             console.error(err);
