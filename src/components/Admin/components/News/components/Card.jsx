@@ -27,11 +27,6 @@ const NewsCard = observer(({ id, title, text }) => {
                 <p className={s.newsCard__text}>{text}</p>
 
                 <div className={s.newsCard__actions}>
-                    <Link
-                        to={`/admin/news/edit/${id}`}
-                        className={`${s.newsCard__btn} ${s.editBtn}`}>
-                        Редактировать
-                    </Link>
                     <button
                         onClick={handleDelete}
                         className={`${s.newsCard__btn} ${s.delBtn}`}>
