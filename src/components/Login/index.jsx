@@ -78,7 +78,7 @@ const Login = observer(() => {
                     <h2>Вход</h2>
                     <form>
                         <FormGroup name="email" text="Почта"/>
-                        <FormGroup name="password" text="Пароль"/>
+                        <FormGroup type="password" name="password" text="Пароль"/>
 
                         <button onClick={handleBtnClick} className={s.form__button}>Войти</button>
                     </form>

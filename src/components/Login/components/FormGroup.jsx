@@ -3,7 +3,7 @@ import s from "../styles.module.css";
 import {observer} from "mobx-react-lite";
 import {useStores} from "../../../stores/root-store-context.js";
 
-const FormGroup = observer(({name, text}) => {
+const FormGroup = observer(({name, text, type="text"}) => {
     const {
         login: { formData, updateField }
     } = useStores()
@@ -14,7 +14,7 @@ const FormGroup = observer(({name, text}) => {
     return (
         <div className={s.form__group}>
             <label htmlFor={name}>{text}:</label>
-            <input type="text" id={name} name={name} value={formData[name]} onChange={handleChange} required/>
+            <input type={type} id={name} name={name} value={formData[name]} onChange={handleChange} required/>
         </div>
     );
 });

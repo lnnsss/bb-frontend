@@ -20,7 +20,7 @@ const RestorePassword = () => {
                 await axios.post(`${apiAuthURL}/password-reset/request`, { email })
 
                 openModal(`Письмо для сброса пароля отправлено на почту: ${email}`)
-                navigate("/login")
+                navigate("/confirmPassword")
             } catch (error) {
                 if (error.response) {
                     openModal(`Ошибка: ${error.response.data.message || "Не удалось отправить письмо."}`)

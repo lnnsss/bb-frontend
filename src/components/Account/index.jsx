@@ -55,7 +55,6 @@ const Account = observer(() => {
                         <h2 className={s.userName}>{name} {lastName}</h2>
                         <p className={s.userEmail}>{email}</p>
                         <div className={s.btns}>
-                            <button className={s.editButton}>Редактировать профиль</button>
                             <button className={s.logOutButton} onClick={handleLogOut}>Выйти</button>
                         </div>
                     </div>
