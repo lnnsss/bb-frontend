@@ -7,6 +7,7 @@ import Users from "../pages/admin/UsersPage.jsx";
 import User from "../pages/admin/UserPage.jsx";
 import Add from "../pages/admin/AddPage.jsx";
 import News from "../pages/admin/NewsPage.jsx";
+import Deleted from "../pages/admin/DeletedPage.jsx";
 
 const AdminRoutes = () => {
 
@@ -19,6 +20,7 @@ const AdminRoutes = () => {
             <Route path="/admin/games" element={<Games />} />
             <Route path="/admin/news" element={<News />} />
             <Route path="/admin/add" element={<Add />} />
+            <Route path="/admin/deleted" element={<Deleted />} />
 
             {/* Перенаправление для несуществующих страниц */}
             <Route path="*" element={<NotFound />} />

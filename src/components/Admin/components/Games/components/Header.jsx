@@ -6,7 +6,10 @@ const Header = () => {
     return (
         <header className={s.header}>
             <h1 className={s.games__title}>Игры</h1>
-            <Link to="/admin/add" className={s.addGame}>Добавить игру</Link>
+            <div className={s.btns}>
+                <Link to="/admin/add" className={s.addGame}>Добавить игру</Link>
+                <Link to="/admin/deleted" className={s.addGame}>Удалённые</Link>
+            </div>
         </header>
     );
 };

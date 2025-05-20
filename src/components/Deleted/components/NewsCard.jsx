@@ -2,22 +2,26 @@ import React from 'react';
 import s from "../styles.module.css";
 import { observer } from 'mobx-react-lite';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import {useStores} from "../../../../../stores/root-store-context.js";
-import {apiNewsURL} from "../../../../../configs/constants.js";
+import {apiNewsURL} from "../../../configs/constants.js";
+import {useStores} from "../../../stores/root-store-context.js";
 
-const NewsCard = observer(({ id, title, text }) => {
+const NewsCard = observer(({ title, text }) => {
     const {
         news: { news, setNews, deletedNews, setDeletedNews }
     } = useStores();
 
-    const handleDelete = async () => {
+    const handleSubmit = async () => {
         try {
-            await axios.delete(`${apiNewsURL}/${id}`);
-            setNews(news.filter(item => item.id !== id));
-            setDeletedNews([...deletedNews, { title, text }]);
-        } catch(err) {
-            console.error('Ошибка при удалении новости:', err);
+            await axios.post(apiNewsURL, { title, text });
+
+            const filteredNews = deletedNews.filter(
+                item => !(item.title === title && item.text === text)
+            );
+
+            setNews([...news, {title, text}]);
+            setDeletedNews(filteredNews);
+        } catch (err) {
+            console.error(err);
         }
     };
 
@@ -29,9 +33,9 @@ const NewsCard = observer(({ id, title, text }) => {
 
                 <div className={s.newsCard__actions}>
                     <button
-                        onClick={handleDelete}
+                        onClick={handleSubmit}
                         className={`${s.newsCard__btn} ${s.delBtn}`}>
-                        Удалить
+                        Восстановить
                     </button>
                 </div>
             </div>

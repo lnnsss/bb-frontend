@@ -12,6 +12,7 @@ import accountStore from "./account-store.js";
 import newsStore from "./news-store.js";
 import ticketStore from "./ticket-store.js";
 import modalStore from "./modal-store.js";
+import deletedStore from "./deleted-store.js";
 
 class RootStore {
     token = tokenStore
@@ -27,6 +28,7 @@ class RootStore {
     account = accountStore
     news = newsStore
     ticket = ticketStore
+    deleted = deletedStore
     modal = modalStore
 }
 

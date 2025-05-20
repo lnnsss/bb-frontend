@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class NewsStore {
     news = []
+    deletedNews = []
 
     title = '';
     text = '';
@@ -12,6 +13,10 @@ class NewsStore {
 
     setNews = (newNews) => {
         this.news = newNews;
+    }
+
+    setDeletedNews = (newNews) => {
+        this.deletedNews = newNews;
     }
 
     setTitle = (value) => {

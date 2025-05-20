@@ -1,25 +1,52 @@
 import React from 'react';
 import s from "../styles.module.css"
 import axios from 'axios';
-import { apiPlayersURL } from "../../../../../configs/constants";
-import {useStores} from "../../../../../stores/root-store-context";
 import { observer } from 'mobx-react-lite';
+import {useStores} from "../../../stores/root-store-context.js";
+import {apiPlayersURL} from "../../../configs/constants.js";
 
-const Card = observer(({id, imageUrl, name, lastName, number, height, weight, position, birthday, country }) => {
+const PlayerCard = observer(({ imageUrl, name, lastName, number, height, weight, position, birthday, country }) => {
     const {
         players: { players, setPlayers, deletedPlayers, setDeletedPlayers }
     } = useStores();
 
-    // удаление игрока
-    const handleDelete = async () => {
+    const handleSubmit = async () => {
+        const playerData = {
+            name,
+            lastName,
+            number,
+            position,
+            birthday,
+            country,
+            height,
+            weight,
+            imageUrl
+        };
+
         try {
-            await axios.delete(`${apiPlayersURL}/${id}`)
-            setPlayers(players.filter(p => p.id !== id))
-            setDeletedPlayers([...deletedPlayers, {imageUrl, name, lastName, number, height, weight, position, birthday, country}]);
-        } catch(err) {
+            await axios.post(apiPlayersURL, playerData);
+
+            setPlayers([...players, playerData]);
+
+            const filtered = deletedPlayers.filter(p =>
+                !(
+                    p.name === name &&
+                    p.lastName === lastName &&
+                    p.number === number &&
+                    p.position === position &&
+                    p.birthday === birthday &&
+                    p.country === country &&
+                    p.height === height &&
+                    p.weight === weight &&
+                    p.imageUrl === imageUrl
+                )
+            );
+
+            setDeletedPlayers(filtered);
+        } catch (err) {
             console.error(err);
         }
-    }
+    };
 
     return (
         <div className={s.playerCard}>
@@ -51,11 +78,10 @@ const Card = observer(({id, imageUrl, name, lastName, number, height, weight, po
                 <p className={s.playerCard__detail}>
                     <span className={s.playerCard__label}>Страна:</span> {country}
                 </p>
-                <button className={`${s.playerCard__btn} ${s.editBtn}`}>Редактировать</button>
-                <button onClick={handleDelete} className={`${s.playerCard__btn} ${s.delBtn}`}>Удалить</button>
+                <button onClick={handleSubmit} className={`${s.playerCard__btn} ${s.delBtn}`}>Восстановить</button>
             </div>
         </div>
     );
 });
 
-export default Card;
+export default PlayerCard;

@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class PlayersStore {
     players = [];
+    deletedPlayers = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -12,6 +13,9 @@ class PlayersStore {
     }
     setPlayers = (newPlayers) => {
         this.players = newPlayers
+    }
+    setDeletedPlayers = (newPlayers) => {
+        this.deletedPlayers = newPlayers
     }
 }
 
