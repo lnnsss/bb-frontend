@@ -4,7 +4,7 @@ import Header from "./components/Header.jsx";
 import {observer} from "mobx-react-lite";
 import {useStores} from "../../stores/root-store-context.js";
 import PlayerCard from "./components/PlayerCard.jsx";
-import NewsCard from "../Admin/components/News/components/Card.jsx";
+import NewsCard from "./components/NewsCard.jsx";
 
 const Deleted = observer(() => {
     const {
