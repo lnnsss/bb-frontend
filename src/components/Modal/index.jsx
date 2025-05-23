@@ -16,7 +16,7 @@ const Modal = observer(() => {
         }
     };
 
-    return (
+    if (isOpen) return (
         <div className={s.overlay} onClick={handleOverlayClick}>
             <div className={s.modal}>
                 <p className={s.text}>{text}</p>

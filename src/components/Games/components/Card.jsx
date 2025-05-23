@@ -44,7 +44,7 @@ const Card = observer(({ id, imageUrl, opponent, dateTime, venue }) => {
 
         try {
             await axios.put(`${apiUsersURL}/${userId}/addGame`, gameData);
-            openModal("Билет на матч приобретен успешно")
+            openModal("Билет забронирован успешно!")
         } catch (err) {
             console.error(err);
         }
@@ -80,7 +80,7 @@ const Card = observer(({ id, imageUrl, opponent, dateTime, venue }) => {
                     <p className={s.gameVenue}>📍 {venue}</p>
                 </div>
                 <div className={s.matchDetailsRight}>
-                    <button onClick={handleBuy} className={s.buyTicketButton}>Купить билет</button>
+                    <button onClick={handleBuy} className={s.buyTicketButton}>Забронировать</button>
                 </div>
             </div>
         </div>
