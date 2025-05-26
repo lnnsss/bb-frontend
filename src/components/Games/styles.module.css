@@ -122,6 +122,11 @@
 .buyTicketButton:hover {
     background-color: #0056b3;
 }
+.ticketsCount {
+    margin-top: 10px;
+    font-weight: 500;
+    color: #333;
+}
 
 /*----media---------------------------------*/
 

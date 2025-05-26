@@ -7,13 +7,14 @@ import { observer } from "mobx-react-lite";
 
 const Card = observer(({ id, imageUrl, opponent, dateTime, venue }) => {
     const {
-        token: { getID },
-        modal: { openModal }
-    } = useStores()
-    const userId = getID();
+        token,
+        modal,
+        games
+    } = useStores();
+
+    const userId = token.getID();
     const ourLogo = '/logo.png';
 
-    // Форматирование времени
     const formatDate = (dateString) => {
         try {
             const eventDate = new Date(dateString);
@@ -26,50 +27,37 @@ const Card = observer(({ id, imageUrl, opponent, dateTime, venue }) => {
                 minute: '2-digit'
             });
         } catch (e) {
-            console.error("Error formatting date:", e);
+            console.error("Ошибка форматирования даты:", e);
             return dateString;
         }
     };
 
-    // Покупка билета
     const handleBuy = async () => {
-
-        const gameData = {
-            id,
-            opponent,
-            dateTime,
-            venue,
-            imageUrl
-        };
+        const gameData = { id, opponent, dateTime, venue, imageUrl };
 
         try {
             await axios.put(`${apiUsersURL}/${userId}/addGame`, gameData);
-            openModal("Билет забронирован успешно!")
+            games.decrementTickets(id);
+            modal.openModal("Билет забронирован успешно!");
         } catch (err) {
             console.error(err);
         }
     };
 
+    const ticketsLeft = games.getTicketsLeft(id);
+
     return (
         <div className={s.gameBlock}>
             <div className={s.teamInfo}>
                 <div className={s.team}>
-                    <img
-                        src={ourLogo}
-                        alt="АПТ"
-                        className={s.teamLogo}
-                    />
+                    <img src={ourLogo} alt="АПТ" className={s.teamLogo} />
                     <span className={s.teamName}>АПТ</span>
                 </div>
 
                 <span className={s.vs}>VS</span>
 
                 <div className={s.team}>
-                    <img
-                        src={imageUrl}
-                        alt={opponent}
-                        className={s.teamLogo}
-                    />
+                    <img src={imageUrl} alt={opponent} className={s.teamLogo} />
                     <span className={s.teamName}>{opponent}</span>
                 </div>
             </div>
@@ -78,9 +66,16 @@ const Card = observer(({ id, imageUrl, opponent, dateTime, venue }) => {
                 <div className={s.matchDetailsLeft}>
                     <p className={s.gameDate}>📅 {formatDate(dateTime)}</p>
                     <p className={s.gameVenue}>📍 {venue}</p>
+                    <p className={s.ticketsCount}>🎟 Осталось: {ticketsLeft} шт.</p>
                 </div>
                 <div className={s.matchDetailsRight}>
-                    <button onClick={handleBuy} className={s.buyTicketButton}>Забронировать</button>
+                    <button
+                        onClick={handleBuy}
+                        className={s.buyTicketButton}
+                        disabled={ticketsLeft <= 0}
+                    >
+                        {ticketsLeft > 0 ? 'Забронировать' : 'Билеты закончились'}
+                    </button>
                 </div>
             </div>
         </div>
